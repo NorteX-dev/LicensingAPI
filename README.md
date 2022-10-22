@@ -15,16 +15,16 @@
 This API was made with the intention to use in 3rd party applications, like desktop software or websites.
 
 ## Routes documentation:
-| Method | Route                        | Description                                                                    | Query Parameters | Body                                  | Requires Authentication? (refer to [Authentication](#authentication)) |
-|--------|------------------------------|--------------------------------------------------------------------------------|------------------|---------------------------------------|-----------------------------------------------------------------------|
-| GET    | /                            | Index route, displays version                                                  | none             |                                       |                                                                       |
-| GET    | /licenses/validate/:key      | Validate a license key                                                         | key: string      |                                       |                                                                       |
-| GET    | /licenses/validate/:key/info | Validate a license key and return extended information                         | key: string      |                                       | ✅                                                                     |
-| GET    | /licenses                    | Get all licenses                                                               | none             |                                       | ✅                                                                     |
-| GET    | /licenses/:id                | Get license by id                                                              | id: string       |                                       | ✅                                                                     |
-| POST   | /licenses                    | Create new license                                                             | none             | `{ label: string, exp?: timestamp }`  | ✅                                                                     |
-| PATCH  | /licenses/:id                | Fully edit by id (if exp is undefined, expiration time is going to be cleared) | id: string       | `{ label: string, exp: timestamp }`   | ✅                                                                     |
-| PUT    | /licenses/:id                | Partially edit by id                                                           | id: string       | `{ label?: string, exp?: timestamp }` | ✅                                                                     |
+| Method | Route                        | Description                                            | Query Parameters | Body                                  | Requires Authentication? (refer to [Authentication](#authentication)) |
+|--------|------------------------------|--------------------------------------------------------|------------------|---------------------------------------|-----------------------------------------------------------------------|
+| GET    | /                            | Index route, displays version                          | none             |                                       |                                                                       |
+| GET    | /licenses/validate/:key      | Validate a license key                                 | key: string      |                                       |                                                                       |
+| GET    | /licenses/validate/:key/info | Validate a license key and return extended information | key: string      |                                       | ✅                                                                     |
+| GET    | /licenses                    | Get all licenses                                       | none             |                                       | ✅                                                                     |
+| GET    | /licenses/:id                | Get license by id                                      | id: string       |                                       | ✅                                                                     |
+| POST   | /licenses                    | Create new license                                     | none             | `{ label: string, exp?: timestamp }`  | ✅                                                                     |
+| PATCH  | /licenses/:id                | Fully edit by id                                       | id: string       | `{ label: string, exp: timestamp }`   | ✅                                                                     |
+| PUT    | /licenses/:id                | Partially edit by id                                   | id: string       | `{ label?: string, exp?: timestamp }` | ✅                                                                     |
 
 ## Authentication
 <a id="authentication"></a>
