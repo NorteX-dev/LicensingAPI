@@ -100,7 +100,7 @@ const LicensesTable = ({ data, setPage }: any) => {
 				<Table
 					striped={true}
 					withColumnBorders={true}
-					style={{ display: "flex", overflowX: "auto", whiteSpace: "nowrap" }}
+					style={{ display: "block", overflowX: "auto", whiteSpace: "nowrap" }}
 				>
 					<thead>
 						<tr>
