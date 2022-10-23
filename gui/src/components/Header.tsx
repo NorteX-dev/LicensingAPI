@@ -19,9 +19,9 @@ export default function Header({ active = "licenses" }: IProps) {
 					Licenses
 				</Text>
 			</Link>
-			<Link href={"/create"} passHref>
-				<Text weight={active === "createnew" ? "bold" : "normal"} sx={{ cursor: "pointer" }}>
-					Create License
+			<Link href={"/settings"} passHref>
+				<Text weight={active === "settings" ? "bold" : "normal"} sx={{ cursor: "pointer" }}>
+					Settings
 				</Text>
 			</Link>
 		</Box>

@@ -17,14 +17,25 @@ export default class LicensesRoute {
 		 * GET /licenses - Get all
 		 * */
 		this.router.get("/", authenticateApiKey, async (req: Request, res: Response<IResponse>) => {
+			const perPage = 10;
 			let page = parseInt(req.query.page as string);
 			if (!page || isNaN(page)) page = 1;
 			const licenses = await License.findAll({
 				order: [["createdAt", "DESC"]],
-				limit: 10,
-				offset: (page - 1) * 10,
+				limit: perPage,
+				offset: (page - 1) * perPage,
 			});
-			res.json({ ok: true, message: "Licenses found.", data: { licenses: licenses.map((l) => l.sanitised) } });
+			res.json({
+				ok: true,
+				message: "Licenses found.",
+				data: {
+					licenses: licenses.map((l) => l.sanitised),
+					pages: {
+						current: page,
+						total: Math.ceil((await License.count()) / perPage),
+					},
+				},
+			});
 		});
 
 		/*
