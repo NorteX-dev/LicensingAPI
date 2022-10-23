@@ -16,8 +16,15 @@ export default class LicensesRoute {
 		/*
 		 * GET /licenses - Get all
 		 * */
-		this.router.get("/", authenticateApiKey, (req: Request, res: Response<IResponse>) => {
-			res.status(405).json({ ok: true, message: "Method not allowed." });
+		this.router.get("/", authenticateApiKey, async (req: Request, res: Response<IResponse>) => {
+			let page = parseInt(req.query.page as string);
+			if (!page || isNaN(page)) page = 1;
+			const licenses = await License.findAll({
+				order: [["createdAt", "DESC"]],
+				limit: 10,
+				offset: (page - 1) * 10,
+			});
+			res.json({ ok: true, message: "Licenses found.", data: { licenses: licenses.map((l) => l.sanitised) } });
 		});
 
 		/*

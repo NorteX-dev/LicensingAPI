@@ -23,6 +23,10 @@ export default class License extends Model<License> {
 		return {
 			id: this.id,
 			label: this.label,
+			expires: this.exp,
+			status: this.valid ? "valid" : "invalid",
+			createdAt: this.createdAt,
+			updatedAt: this.updatedAt,
 		};
 	}
 

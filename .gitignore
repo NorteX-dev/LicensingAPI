@@ -3,3 +3,6 @@ node_modules
 database.sqlite
 .idea
 .env
+gui/node_modules
+gui/yarn.lock
+yarn.lock

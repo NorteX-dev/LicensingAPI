@@ -4,6 +4,7 @@ import * as express from "express";
 import * as cors from "cors";
 import IndexRoute from "../routes/IndexRoute";
 import LicensesRoute from "../routes/LicensesRoute";
+import { PORT } from "../util/config";
 
 const ROUTES = {
 	"/": new IndexRoute(),
@@ -43,7 +44,7 @@ export class Server {
 	listen() {
 		this.database.sync().then(() => {
 			console.log("Database synchronised.");
-			this.app.listen(3000, () => {
+			this.app.listen(PORT, () => {
 				console.log("Server started on port 3000 : https://localhost:3000");
 			});
 		});
