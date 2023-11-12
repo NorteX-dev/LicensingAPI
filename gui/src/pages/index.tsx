@@ -11,6 +11,7 @@ import {
 	Pagination,
 	TextInput,
 	Divider,
+	MediaQuery,
 } from "@mantine/core";
 import Layout from "../components/Layout";
 import { useQuery } from "@tanstack/react-query";
@@ -18,6 +19,7 @@ import { API_URL } from "../config";
 import { IconPencil, IconSearch, IconTrash } from "@tabler/icons";
 import { useEffect, useState } from "react";
 import CreateNew from "../components/CreateNew";
+import Waves from "../components/Waves";
 
 const LicensesLoader = ({ data, status, error, setPage }: any) => {
 	if (status === "loading") {
@@ -174,8 +176,50 @@ export default function LicensesManager() {
 
 	return (
 		<Layout active={"licenses"}>
-			<Container>
-				<Text sx={{ fontSize: "2rem", textAlign: "center" }}>Active Licenses</Text>
+			<Box
+				sx={(theme) => ({
+					backgroundImage: 'url("/title_waves.svg")',
+					width: "100%",
+					color: "white",
+					aspectRatio: "960/100",
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
+					backgroundSize: "cover",
+					position: "relative",
+					[`@media (max-width: ${theme.breakpoints.md}px)`]: {
+						display: "none",
+					},
+				})}
+			>
+				<Text
+					weight={"bold"}
+					size={"lg"}
+					sx={{
+						fontSize: "2rem",
+						position: "absolute",
+						top: "50%",
+						left: "50%",
+						transform: "translate(-50%, -100%)",
+					}}
+				>
+					Active Licenses
+				</Text>
+			</Box>
+			{/* MOBILE HEADER */}
+			<Text
+				weight={"bold"}
+				size={"lg"}
+				sx={(theme) => ({
+					fontSize: "2rem",
+					textAlign: "center",
+					[`@media (min-width: ${theme.breakpoints.md}px)`]: {
+						display: "none",
+					},
+				})}
+			>
+				Active Licenses
+			</Text>
+			<Container mb={100}>
 				<LicensesLoader data={data} status={status} error={error} setPage={setPage} />
 				<Divider my={20} />
 				<CreateNew />

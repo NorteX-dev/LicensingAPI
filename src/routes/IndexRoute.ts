@@ -1,18 +1,10 @@
-import * as express from "express";
-import { IResponse } from "../interfaces/IResponse";
-import { Request, Response } from "express";
+import { Request, Response, Router } from "express";
 
-export default class IndexRoute {
-	private router: express.Router;
+import { ResponseShape } from "../index";
 
-	constructor() {
-		this.router = express.Router();
-		this.middleware();
-	}
+const router = Router();
+export { router as indexRoute };
 
-	middleware() {
-		this.router.get("/", (req: Request, res: Response<IResponse>) => {
-			res.status(200).json({ ok: true, message: "Licensing system version 1" });
-		});
-	}
-}
+router.get("/", (req: Request, res: Response<ResponseShape>) => {
+	res.status(200).json({ ok: true, message: "Licensing system" });
+});

@@ -1,5 +1,6 @@
-import type { Request, Response, NextFunction } from "express";
-import { API_KEY } from "../util/config";
+import type { NextFunction, Request, Response } from "express";
+
+import { API_KEY } from "./config";
 
 export const authenticateApiKey = (req: Request, res: Response, next: NextFunction) => {
 	const apiKey = req.headers["x-api-key"] as string;
