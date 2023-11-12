@@ -14,14 +14,13 @@ export type ResponseShape = {
 };
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 
 const routes: Record<string, Router> = {
 	"/": indexRoute,
 	"/licenses": licenseRoute,
 };
-
-app.use(express.json());
-app.use(cors());
 
 for (const [route, router] of Object.entries(routes)) {
 	app.use(route, router);
